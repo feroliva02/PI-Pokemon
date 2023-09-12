@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+    background-image: url("../../images/pokemon-go-hd-po-1366x768.jpg"); /* Reemplaza 'tu-imagen-de-fondo.jpg' con la URL de tu imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100vh; /* Esto ajustará la altura al 100% del viewport */
+    overflow-y: scroll;
+  }
+
+  .btn {
+    font-size: 1vw;
+    background: transparent;
+    border: none;
+    margin-top: 2vw;
+    padding: 1em 1.5em;
+    color: #d71d1d;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 0.5s ease;
+  }
+  
+  .btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3.5px;
+    width: 0;
+    background-color: #d71d1d;
+    transition: all 0.5s ease;
+  }
+  
+  .btn:hover::before {
+    width: 100%;
+  }
+
+  .Link{
+    color: white;
+    text-decoration: none; /* Esto quitará el subrayado */
+  }

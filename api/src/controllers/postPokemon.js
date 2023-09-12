@@ -23,8 +23,6 @@ const postPokemon =  async (name, image, hp, attack, defense, speed, height, wei
     else{
         throw new Error("Debe elegir al menos 2 tipos")
     }
-    //if (created) console.log("Pokemon creado con exito", newPokemon.name);
-    //else console.log("Pokemon existente encontrado con exito", newPokemon.name);
     return newPokemon;
 
 }

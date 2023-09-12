@@ -3,7 +3,7 @@ const { Pokemon, Type } = require("../db")
 const { Op } = require("sequelize");
 
 const getPokemonName = async (name) => {
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=40")
+    const response = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=60")
     const pokemonList = response.data.results;
     const pokemonEncontrado = pokemonList.find((pokemon) => pokemon.name === name);
     const pokemonNameApi = []
@@ -14,7 +14,7 @@ const getPokemonName = async (name) => {
         pokemonNameApi.push({
             id,
             name,
-            image: sprites.front_default,
+            image: sprites.other.dream_world.front_default,
             hp: stats.find((estadistica) => estadistica.stat.name === "hp").base_stat,
             attack: stats.find((estadistica) => estadistica.stat.name === "attack").base_stat,
             defense: stats.find((estadistica) => estadistica.stat.name === "defense").base_stat,

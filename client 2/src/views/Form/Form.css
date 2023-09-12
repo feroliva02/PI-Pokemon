@@ -1,0 +1,128 @@
+.formul {
+    background-color: rgba(0, 0, 0, 0.516);
+    color: white;
+}
+
+.input {
+    max-width: 190px;
+    height: 44px;
+    background-color: transparet;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    border: 2px solid grey;
+    font-size: 1rem;
+    transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+.label {
+    display: block;
+    margin-bottom: .3rem;
+    font-size: .9rem;
+    font-weight: bold;
+    color: white;
+    transition: color .3s cubic-bezier(.25, .01, .25, 1) 0s;
+}
+
+.input:hover,
+.input:focus,
+.input-group:hover .input {
+    outline: none;
+    border-color: #ffffff;
+}
+
+.input-group:hover .label,
+.input:focus {
+    color: #ffffff;
+}
+
+.type-buttons {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+}
+
+.button_type {
+    background-color: transparent;
+    border: 0.125em solid #585858;
+    border-radius: 0.9375em;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 400;
+    margin: 5px;
+    padding: 1em 2.3em;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+}
+
+
+.button_type:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.button_type:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.button_submit {
+    --color: #d71d1d;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 1;
+}
+
+.button_submit:disabled {
+    cursor: not-allowed;
+}
+
+.button_submit::before,
+.button_submit::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+}
+
+.button_submit::before {
+    top: -1em;
+    left: -1em;
+}
+
+.button_submit::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.button_submit:hover::before,
+.button_submit:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.button_submit:hover {
+    color: rgb(10, 25, 30);
+}
+
+.button_submit:active {
+    filter: brightness(.8);
+}

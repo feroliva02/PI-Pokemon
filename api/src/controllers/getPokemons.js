@@ -2,16 +2,16 @@ const axios = require("axios")
 const { Pokemon, Type, PokemonType } = require("../db");
 
 const getAllPokemons = async () => {
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=40")
-    const pokemonsApi = response.data.results;
+    const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=60")
+    const pokemonsApi = response.data.results;  //array con todos los pokemons y su url
     const pokemonsFinalesApi = []
-    for (let i = 0; i < pokemonsApi.length; i++) {
-        const pokemonFeatures = await axios.get(pokemonsApi[i].url)
+    const pokemonPromises = pokemonsApi.map(async (pokemon) =>{  //async porque usamos await en axios
+        const pokemonFeatures = await axios.get(pokemon.url)  //axios devuelve promesas
         const { id, name, sprites, stats, height, weight, types } = pokemonFeatures.data
-        pokemonsFinalesApi.push({
+        return{
             id,
             name,
-            image: sprites.front_default,
+            image: sprites.other.dream_world.front_default,
             hp: stats.find((estadistica) => estadistica.stat.name === "hp").base_stat,
             attack: stats.find((estadistica) => estadistica.stat.name === "attack").base_stat,
             defense: stats.find((estadistica) => estadistica.stat.name === "defense").base_stat,
@@ -19,8 +19,12 @@ const getAllPokemons = async () => {
             height,
             weight,
             type: types.map((tipos) => tipos.type.name)
-        });
-    }
+        };
+    });
+    const promesasResueltas = await Promise.all(pokemonPromises);  //espera a que todas las promesas se resuelvan simultaneamente, las soli se realizan en paralelo
+    pokemonsFinalesApi.push(...promesasResueltas);
+
+
     const pokemonsDb = await Pokemon.findAll({
         include: [{
             model: Type,

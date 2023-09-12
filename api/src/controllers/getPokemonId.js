@@ -31,7 +31,7 @@ const getPokemonId = async (id, source) => {
         const pokemonFinal = {
             id,
             name,
-            image: sprites.front_default,
+            image: sprites.other.dream_world.front_default,
             hp: stats.find((estadistica) => estadistica.stat.name === "hp").base_stat,
             attack: stats.find((estadistica) => estadistica.stat.name === "attack").base_stat,
             defense: stats.find((estadistica) => estadistica.stat.name === "defense").base_stat,
