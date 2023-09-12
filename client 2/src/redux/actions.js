@@ -23,26 +23,34 @@ export const getPokemons = () => {
 
 export const getPokemonId = (id) => {
     return async (dispatch) => {
-        const pokemonId = (await axios.get(`http://localhost:3001/pokemons/${id}`)).data
-        return dispatch({
-            type: GET_POKEMON_ID,
-            payload: pokemonId
-        })
+        try {
+            const pokemonId = (await axios.get(`http://localhost:3001/pokemons/${id}`)).data
+            return dispatch({
+                type: GET_POKEMON_ID,
+                payload: pokemonId
+            })
+        } catch(error){
+            window.alert(error.response.data)
+        }
     }
 }
 
 export const getPokemonName = (name) => {
     return async (dispatch) => {
-        const pokemonName = await axios.get(`http://localhost:3001/pokemons/?name=${name}`)
-        console.log(pokemonName);
-        return dispatch({
-            type: GET_POKEMON_NAME,
-            payload: pokemonName.data
-        })
+        try {
+            const pokemonName = await axios.get(`http://localhost:3001/pokemons/?name=${name}`)
+            console.log(pokemonName);
+            return dispatch({
+                type: GET_POKEMON_NAME,
+                payload: pokemonName.data
+            })
+        } catch (error) {
+            window.alert(error.response.data)
+        }
     }
 }
 
-export const getTypes = () =>{
+export const getTypes = () => {
     return async (dispatch) => {
         const pokemonTypes = await axios.get(`http://localhost:3001/types`)
         return dispatch({
@@ -52,8 +60,8 @@ export const getTypes = () =>{
     }
 }
 
-export const postPokemon = (pokemonData) =>{
-    return async(dispatch) =>{
+export const postPokemon = (pokemonData) => {
+    return async (dispatch) => {
         const response = await axios.post("http://localhost:3001/pokemons", pokemonData)
         return dispatch({
             type: POST_POKEMON,
@@ -62,29 +70,29 @@ export const postPokemon = (pokemonData) =>{
     }
 }
 
-export const showPokemons = ()=>{
-    return{
+export const showPokemons = () => {
+    return {
         type: SHOW_POKEMONS
     }
 }
 
 
-export const filterTypeCards = (type)=>{
-    return{
+export const filterTypeCards = (type) => {
+    return {
         type: FILTER_TYPE,
         payload: type
     }
 }
 
-export const filterOriginCards = (origin)=>{
-    return{
+export const filterOriginCards = (origin) => {
+    return {
         type: FILTER_ORIGIN,
         payload: origin,
     }
 }
 
-export const orderCards = (orden) =>{
-    return{
+export const orderCards = (orden) => {
+    return {
         type: ORDER_CARDS,
         payload: orden
     }

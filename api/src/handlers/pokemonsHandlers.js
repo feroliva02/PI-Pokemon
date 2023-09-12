@@ -24,7 +24,7 @@ const getPokemonIdHandler = async (req, res) => {
         res.status(200).json(pokemonId);
     }
     catch (error) {
-        res.status(404).send("No se encontró el Pokemón")
+        res.status(404).send("No se encontró el Pokémon")
     }
 }
 
