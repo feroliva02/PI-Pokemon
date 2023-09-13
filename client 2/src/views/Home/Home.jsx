@@ -7,8 +7,7 @@ import SearchBar from "../../components/SearchBar"
 
 const Home = () => {
 
-    const types = useSelector(state => state.types)
-    console.log(types);
+    const types = useSelector(state => state.types)  //para mapear los tipos en el filtro
 
     const dispatch = useDispatch();
 
@@ -42,6 +41,7 @@ const Home = () => {
 
                 </select>
                 <select className="button_filtro" onChange={filterOriginHandler}>
+                    <option value="">Todos los origenes</option>
                     <option value="api">API</option>
                     <option value="db">Database</option>
                 </select>

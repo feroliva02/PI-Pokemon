@@ -6,7 +6,6 @@ import {useState} from 'react'
 const Cards = ()=>{
 
     const pokemons = useSelector(state => state.pokemons) //pone en pokemons la prop del estado global que tiene el array con los pokemones
-    console.log(pokemons);
 
     const [pokemonQt, setPokemonQt] = useState(12)
     const [pagina, setPagina] = useState(1)

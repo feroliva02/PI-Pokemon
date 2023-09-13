@@ -42,7 +42,6 @@ const Form = () => {
         const property = event.target.name;  //nombre de la propiedad que disparo el evento
         const value = event.target.value;   //valor 
         setPokemonData({ ...pokemonData, [property]: value })  //asignamos el valor a la propiedad que disparo el evento
-        console.log(pokemonData);
         validate({ ...pokemonData, [property]: value })
     }
 

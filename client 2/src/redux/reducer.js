@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
             return { ...state, types: action.payload };
 
         case POST_POKEMON:
-            return { ...state, pokemons:[...state.pokemons, action.payload]}
+            return { ...state, pokemons: [...state.pokemons, action.payload] }
 
         case SHOW_POKEMONS:
             const pokemonsSinFiltro = [...state.allPokemons]
@@ -38,10 +38,15 @@ const reducer = (state = initialState, action) => {
             }
 
         case FILTER_ORIGIN:
-            if (action.payload === "api") {
+            if (action.payload === "") {
+                const pokemonsProp = [...state.allPokemons]
+                return { ...state, pokemons: pokemonsProp };
+            }
+            else if (action.payload === "api") {
                 const pokemonProp = state.allPokemons.filter((pokemon) => typeof pokemon.id === 'number');
                 return { ...state, pokemons: pokemonProp }
-            } else {
+            }
+            else if (action.payload === "db") {
                 const pokemonProp = state.allPokemons.filter((pokemon) => typeof (pokemon.id) !== 'number');
                 return { ...state, pokemons: pokemonProp }
             };
