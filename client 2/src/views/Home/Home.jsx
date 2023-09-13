@@ -21,12 +21,10 @@ const Home = () => {
 
     const filterOriginHandler = (event) => {
         dispatch(filterOriginCards(event.target.value))
-        console.log(event.target.value);
     }
 
     const orderHandler = (event) => {
         dispatch(orderCards(event.target.value));
-        console.log(event.target.value);
     }
 
     return (
