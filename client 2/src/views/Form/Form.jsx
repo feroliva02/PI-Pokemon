@@ -160,11 +160,11 @@ const Form = () => {
 
                 <label className="label">Types: </label>
                 <div className="type-buttons">
-                {types.map((type) => {
-                    return (
-                        <button className="button_type" type="button" key={type.id} value={type.name} onClick={selectTypeHandler}>{type.name}</button>
-                    )
-                })}
+                    {types.map((type) => {
+                        return (
+                            <button className="button_type" type="button" key={type.id} value={type.name} onClick={selectTypeHandler}>{type.name}</button>
+                        )
+                    })}
                 </div>
                 <button disabled={hayErrores || campoVacio} className="button_submit" type="submit">Crear Pokémon</button>
             </div>
